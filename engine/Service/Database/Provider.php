@@ -5,12 +5,12 @@ namespace Engine\Service\Database;
 use Engine\Service\AbstractProvider;
 use Engine\Core\Database\Connection;
 
-class Provider extends AbstractProvider {
+class Provider extends AbstractProvider { // сервис провайдер БД
 
-    public $serviceName = 'db';
+    public $serviceName = 'db'; // имя сервис провайдера
 
-    public function init(){
-        $db = new Connection();
-        $this->di->set($this->serviceName, $db);
+    public function init(){ // выполняется при бутстрапинге
+        $db = new Connection(); // провайде создаёт новый объёкт своего сервиса
+        $this->di->set($this->serviceName, $db); // сам записывает зависимость сервиса в DI контейнер
     }
 }

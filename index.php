@@ -1,3 +1,3 @@
 <?php
 
-require_once('engine/bootstrap.php');
+require_once('engine/bootstrap.php'); // подключаем наш бутстрапер

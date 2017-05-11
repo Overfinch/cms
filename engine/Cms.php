@@ -6,7 +6,7 @@ class Cms {
 
     private $di;
 
-    public function __construct($di){
+    public function __construct($di){ // получаем готовый DI контейнер с зависимостями
         $this->di = $di;
     }
 
