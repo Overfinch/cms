@@ -15,10 +15,6 @@ class DI {
     }
 
     function has($key){
-        if (isset($this->container[$key])){
-            return $this->container[$key];
-        }else{
-            return false;
-        }
+        return isset($this->container[$key]) ? $this->container[$key] : null;
     }
 }

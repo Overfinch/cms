@@ -9,7 +9,12 @@ try{
 
     $di = new DI();
 
-    $di->set('test','hello');
+    $services = require_once(__DIR__.'/Config/Service.php');
+    foreach ($services as $service){
+        $provider = new $service($di);
+        $provider->init(); // провайдер сам запишет зависимость в DI контейнер
+
+    }
 
     $cms = new Cms($di);
     $cms->run();
