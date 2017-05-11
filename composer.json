@@ -1,0 +1,15 @@
+{
+    "name": "bundi/cms",
+    "authors": [
+        {
+            "name": "Overfinch",
+            "email": "bundichmail@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Engine\\": "engine"
+        }
+    }
+}
