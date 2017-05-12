@@ -12,7 +12,6 @@ try{
     foreach ($services as $service){
         $provider = new $service($di); // создаём объект
         $provider->init(); // провайдер сам запишет зависимость в DI контейнер
-
     }
 
     $cms = new Cms($di);
