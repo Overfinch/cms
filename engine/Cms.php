@@ -23,7 +23,6 @@ class Cms {
         // получаем объект DispatchedRoute с именем контроллера и параметрами
         $routerDispatch = $this->router->dispatch(Common::getMethod(), Common::getPathUrl());
 
-
         echo "<pre>";
         print_r($routerDispatch);
             print_r($this->di);

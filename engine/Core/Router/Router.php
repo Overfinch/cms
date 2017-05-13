@@ -2,7 +2,7 @@
 
 namespace Engine\Core\Router;
 
-class Router {
+class Router {  // регистрирует роуты и передаёт запрос дальше на UriDispatcher
 
     private $routes = [];
     private $host;

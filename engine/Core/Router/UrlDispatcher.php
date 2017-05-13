@@ -2,7 +2,7 @@
 
 namespace Engine\Core\Router;
 
-class UrlDispatcher
+class UrlDispatcher // находит нужный роут(и имя контроллера) по нашему запросу, и передаёт его в DispatchedRoute
 {
     private $methods = [
         'GET',
