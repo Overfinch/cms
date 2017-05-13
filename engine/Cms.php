@@ -3,6 +3,7 @@
 namespace Engine;
 
 use Engine\DI\DI;
+use Engine\Helper\Common;
 
 class Cms {
 
@@ -15,10 +16,16 @@ class Cms {
     }
 
     public function run(){
-        //$this->router->add('home', '/', 'HomeController:index');
-        //$routerDispatch = $this->router->dispatch('GET', );
+        $this->router->add('home', '/', 'HomeController:index'); // добавляем роуты в роутер
+        $this->router->add('product', '/user/12', 'ProductController:index');
+
+        // передаём метод(GET/POST...) и url
+        // получаем объект DispatchedRoute с именем контроллера и параметрами
+        $routerDispatch = $this->router->dispatch(Common::getMethod(), Common::getPathUrl());
+
 
         echo "<pre>";
+        print_r($routerDispatch);
             print_r($this->di);
         echo "</pre>";
     }

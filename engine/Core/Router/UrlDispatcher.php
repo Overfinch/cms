@@ -28,17 +28,27 @@ class UrlDispatcher
         return isset($this->routes[$method]) ? $this->routes[$method] : [];
     }
 
+    public function register($method, $pattern, $controller){ // записываем в роуты диспатчера
+        $this->routes[strtoupper($method)][$pattern] = $controller;
+    }
+
     public function dispatch($method, $uri){ // принимает метод передачи(POST/GET...) и uri
         $routes = $this->routes(strtoupper($method)); // получаем все роуты нужного метода(POST/GET...)
 
         if(array_key_exists($uri, $routes)){ // проверяет наличие такого uri в роутах
-            return new DispatchedRoute($routes[$uri]); // создаём DispatchedRoute и передаём ему имя контроллера
+            return new DispatchedRoute($routes[$uri]); // создаём DispatchedRoute и передаём ему имя найденного контроллера
         }
+
+        return $this->doDispatch($method, $uri); // если такого uri нету в роутах, то перебераем регуляркой
     }
 
     private function doDispatch($method, $uri){
-        foreach($this->routes($method) as $route => $controller){
-            print $route;
+        foreach($this->routes($method) as $route => $controller){ // перебераем все роуты нужного метода
+            $pattern = '#^'. $route . '$#s'; // паттерн с uri
+
+            if(preg_match($pattern, $uri, $parameters)){ // если в массиве роутов есть uri который соответствует нашему uri
+                return new DispatchedRoute($controller, $parameters); // создаём DispatchedRoute и передаём ему имя найденного контроллера и параметры
+            }
         }
     }
 }
