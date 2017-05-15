@@ -2,8 +2,17 @@
 
 namespace Cms\Controller;
 
-use Engine\Controller;
+class HomeController extends CmsController {
 
-class HomeController extends Controller {
+    public function index(){
+        echo 'Index Page';
+    }
 
+    public function newsAll(){
+        echo "All news";
+    }
+
+    public function news($id){
+        echo 'News - '.$id;
+    }
 }

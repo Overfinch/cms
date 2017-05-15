@@ -5,7 +5,14 @@ namespace Engine;
 use Engine\DI\DI;
 
 abstract class Controller{ // абстрактный класс контроллера
-    public function __construct(DI $di){
 
+    /**
+     * @var DI;
+     */
+    protected $di;
+    protected $db;
+
+    public function __construct(DI $di){
+        $this->di = $di;
     }
 }

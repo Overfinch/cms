@@ -4,7 +4,7 @@ namespace Engine\DI;
 
 class DI {
 
-    private $container = []; // здесь хранится DI контейнер
+    private $container = []; // здесь хранятся зависимости
 
     function set($key, $val){ // записываем зависимости в DI контейнер
         $this->container[$key] = $val;

@@ -2,12 +2,14 @@
 
 namespace Engine\Core\Router;
 
+use Engine\DI\DI;
+
 class DispatchedRoute{
 
     private $controller;
     private $parameters;
 
-    function __construct($controller, $parameters = []){ // принимает имя найденного контроллера и параметры
+    function __construct($controller, $parameters = []){ // принимает имя найденного контроллера и его метода и параметры
         $this->controller = $controller;
         $this->parameters = $parameters;
     }
@@ -15,7 +17,7 @@ class DispatchedRoute{
     /**
      * @return mixed
      */
-    public function getController()
+    public function getController() // возвращает имя найденного контроллера и его метода
     {
         return $this->controller;
     }
@@ -23,8 +25,9 @@ class DispatchedRoute{
     /**
      * @return array
      */
-    public function getParameters(): array
+    public function getParameters(): array // возвращает параметры для найденного контроллера
     {
         return $this->parameters;
     }
+
 }
