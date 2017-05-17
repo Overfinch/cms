@@ -38,7 +38,7 @@ class UrlDispatcher // находит нужный роут(и имя контр
             return $pattern;
         }
 
-        // если в паттерне есть скобки, то находим там слова (слово:слово) - например (id:int)
+        // если в паттерне есть скобки, то находит там конструкцию (слово:слово) - например (id:int) и конверитирует в регулярку типа /news/(?<id>[0-9]+)
         return preg_replace_callback('#\((\w+):(\w+)\)#',[$this, 'replacePattern'], $pattern);
     }
 
@@ -62,11 +62,11 @@ class UrlDispatcher // находит нужный роут(и имя контр
     public function dispatch($method, $uri){ // принимает метод передачи(POST/GET...) и uri
         $routes = $this->routes(strtoupper($method)); // получаем все роуты нужного метода(POST/GET...)
 
-        if(array_key_exists($uri, $routes)){ // проверяет наличие такого uri в роутах
+        if(array_key_exists($uri, $routes)){ // проверяет наличие точно такого uri в роутах
             return new DispatchedRoute($routes[$uri]); // создаём DispatchedRoute и передаём ему имя найденного контроллера
         }
 
-        return $this->doDispatch($method, $uri); // если такого uri нету в роутах, то перебераем регуляркой
+        return $this->doDispatch($method, $uri); // если точно такого uri нету в роутах, то перебераем регуляркой
     }
 
     private function doDispatch($method, $uri){

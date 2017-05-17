@@ -21,9 +21,7 @@ class Cms {
 
         try{
 
-            $this->router->add('home', '/', 'HomeController:index'); // добавляем роуты в роутер
-            $this->router->add('news', '/news', 'HomeController:newsAll');
-            $this->router->add('news_single', '/news/(id:int)', 'HomeController:news');
+            require_once(__DIR__.'/../cms/Route.php'); // подключаем файл с роутами
 
             // передаём метод(GET/POST...) и url
             // получаем объект DispatchedRoute с именем контроллера и параметрами
