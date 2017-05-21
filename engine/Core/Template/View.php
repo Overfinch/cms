@@ -4,8 +4,10 @@ namespace  Engine\Core\Template;
 
 class View {
 
-    function __construct(){
+    protected $theme;
 
+    function __construct(){
+        $this->theme = new Theme(); // создаём объект который отвечает за темы и генерацию эллементов типа (header, footer...)
     }
 
     public function render($template, $vars = []){ // принимаем имя шаблона переменные
@@ -17,6 +19,7 @@ class View {
             );
         }
 
+        $this->theme->setData($vars); // передаём массив с данными в тему
         extract($vars); // получаем переменные из массива
 
         ob_start(); // включаем буфферизацию
