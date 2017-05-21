@@ -2,6 +2,7 @@
 
 namespace Engine;
 
+use Engine\Core\Template\View;
 use Engine\DI\DI;
 
 abstract class Controller{ // абстрактный класс контроллера
@@ -9,10 +10,20 @@ abstract class Controller{ // абстрактный класс контролл
     /**
      * @var DI;
      */
-    protected $di;
-    protected $db;
+    protected $di; // DI контейнер
+
+    /**
+     * @var Core\Database\Connection
+     */
+    protected $db;  // объект класса отвечающий за БД
+    
+    /**
+     * @var View;
+     */
+    protected $view; // объект класса отвечающий за шаблонизатор
 
     public function __construct(DI $di){
         $this->di = $di;
+        $this->view = $this->di->get('view'); // берём view из DI и записываем его в отдельное свойство
     }
 }

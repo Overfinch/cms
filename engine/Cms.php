@@ -38,10 +38,6 @@ class Cms {
             // создаём объект класса нужного контроллера, передаём ему DI, вызываем нужный метод и передаём ему параметры
             call_user_func_array([new $controllerName($this->di), $actionName], $parameters);
 
-            echo "<pre>";
-            echo "<hr>";
-            echo "</pre>";
-
         }catch (\ErrorException $e){
             echo $e->getMessage();
             exit;

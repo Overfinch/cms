@@ -2,7 +2,6 @@
 
 namespace Engine\Core\Router;
 
-use Engine\DI\DI;
 
 class DispatchedRoute{
 

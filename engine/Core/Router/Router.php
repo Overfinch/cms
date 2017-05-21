@@ -12,7 +12,7 @@ class Router {  // регистрирует роуты и передаёт за�
         $this->host = $host;
     }
 
-    public function add($key, $pattern, $controller, $method = 'GET'){ // добавляет роут в массив
+    public function add($key, $pattern, $controller, $method = 'GET'){ // добавляет роут в массив (добавляется в /cms/Route.php)
         $this->routes[$key] = [
             'pattern' => $pattern,
             'controller' => $controller,

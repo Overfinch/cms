@@ -2,13 +2,13 @@
 
 namespace  Engine\Core\Template;
 
-class View{
+class View {
 
     function __construct(){
 
     }
 
-    public function render($template, $vars = []){
+    public function render($template, $vars = []){ // принимаем имя шаблона переменные
         $templatePath = ROOT_DIR.'/content/themes/default/'.$template.'.php'; // получаем путь к шаблону
 
         if (!is_file($templatePath)){ // проверяем наличие шаблона в папке
@@ -25,10 +25,11 @@ class View{
         try{
             require_once($templatePath);
         }catch (\ErrorException $e){
-            ob_end_clean(); // отменяем буфферизацию
+            ob_end_clean(); // если не выходит загрузить шаблон, чистим и закрываем буффер
             echo $e->getMessage();
         }
 
         echo ob_get_clean(); // получаем всё что было в буффере, выводим на экран, и очищаем буффер
+
     }
 }
