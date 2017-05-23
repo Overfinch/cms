@@ -5,7 +5,7 @@ namespace Engine;
 use Engine\Core\Template\View;
 use Engine\DI\DI;
 
-abstract class Controller{ // абстрактный класс контроллера
+abstract class Controller { // абстрактный класс контроллера
 
     /**
      * @var DI;

@@ -11,7 +11,13 @@ class Connection {
     }
 
     private function connect(){
-        $config = require_once('config.php'); // получаем массив конфигрураций
+        $config = [
+            'host' => 'localhost',
+            'db_name' => 'cms',
+            'charset' => 'utf8',
+            'username' => 'root',
+            'password' => ''
+        ];; // иммитируем подключение конфигурационного файла
 
         $dsn = 'mysql:host='.$config['host'].';dbname='.$config['db_name'].';charset='.$config['charset'];
         $this->link = new \PDO($dsn,$config['username'],$config['password']); // инициализируем PDO

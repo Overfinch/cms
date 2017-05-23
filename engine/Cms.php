@@ -21,7 +21,7 @@ class Cms {
 
         try{
 
-            require_once(__DIR__.'/../cms/Route.php'); // подключаем файл с роутами
+            require_once(__DIR__.'/../'.mb_strtolower(ENV).'/Route.php'); // подключаем файл с роутами (константа ENV отвечает за окружение (Cms\, Admin\ ...))
 
             // передаём метод(GET/POST...) и url
             // получаем объект DispatchedRoute с именем контроллера и параметрами
@@ -32,7 +32,7 @@ class Cms {
             }
 
             list($className, $actionName) = explode(":", $routerDispatch->getController(), 2); // получаем имя контроллера и имя метода
-            $controllerName = 'Cms\\Controller\\'.$className; // добавляем нэймспейсы
+            $controllerName = ENV.'\\Controller\\'.$className; // добавляем нэймспейсы (константа ENV отвечает за окружение (Cms\, Admin\ ...))
             $parameters = $routerDispatch->getParameters(); // получаем параметры
 
             // создаём объект класса нужного контроллера, передаём ему DI, вызываем нужный метод и передаём ему параметры
