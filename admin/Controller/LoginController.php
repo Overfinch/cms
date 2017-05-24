@@ -4,7 +4,7 @@ namespace Admin\Controller;
 class LoginController extends AdminController {
 
     public function form(){
-        echo "Form";
+        $this->view->render('login');
     }
 
 }

@@ -11,7 +11,8 @@ class View {
     }
 
     public function render($template, $vars = []){ // принимаем имя шаблона переменные
-        $templatePath = ROOT_DIR.'/content/themes/default/'.$template.'.php'; // получаем путь к шаблону
+
+        $templatePath = $this->getTemplatePath($template,ENV); // получаем путь к шаблону
 
         if (!is_file($templatePath)){ // проверяем наличие шаблона в папке
             throw new \InvalidArgumentException(
@@ -34,5 +35,12 @@ class View {
 
         echo ob_get_clean(); // получаем всё что было в буффере, выводим на экран, и очищаем буффер
 
+    }
+
+    public function getTemplatePath($template, $env = null){
+        if($env == 'Cms'){
+            return ROOT_DIR.'/content/themes/default/'.$template.'.php';
+        }
+        return ROOT_DIR.'/View/'.$template.'.php';
     }
 }
